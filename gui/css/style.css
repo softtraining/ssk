@@ -1,0 +1,13 @@
+.content-fixed-navbar {
+    margin-top: 60px;
+}
+
+#loginForm {
+    max-width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#loginForm input, label {
+    display: inline;
+}

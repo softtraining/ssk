@@ -1,0 +1,11 @@
+<div class="content-fixed-navbar">
+    <div id="loginForm" class="wrapper container">
+        <label for="userCode">User code:</label>
+        <input id="userCode" ng-model="form.userCode" type="text" class="form-control" placeholder="User code" />
+        <br />
+        <label for="isDoctor">Sign as doctor?</label>
+        <input id="isDoctor" ng-model="form.isDoctor" type="checkbox" class="form-control" style="display: inline" />
+        <br/>
+        <button ng-click="login()" class="btn btn-primary">Sign in</button>
+    </div>
+</div>
