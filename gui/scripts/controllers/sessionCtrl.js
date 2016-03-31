@@ -1,16 +1,15 @@
 var app = angular.module('clinicApp')
 
-app.controller('sessionCtrl', ['$scope', 'errorService', 'Auth',
-    function ($scope, errorService, Auth) {
+app.controller('sessionCtrl', ['$scope', '$rootScope', 'errorService', 'Auth',
+    function ($scope, $rootScope, errorService, Auth) {
         $scope.form = {};
-        $scope.form.isDoctor = false;
-
+        $rootScope.loginError = false;
         $scope.login = function () {
-            if ($scope.form.userCode != null) {
-                Auth.login($scope.form.userCode, $scope.form.isDoctor);
+            if ($scope.form.login != null && $scope.form.password != null) {
+                Auth.login($scope.form.login, $scope.form.password);
             }
             else {
-                errorService.logError("sessionCtrl -> user code is empty");
+                errorService.logError("sessionCtrl -> login or password is empty");
             }
         }
     }]);

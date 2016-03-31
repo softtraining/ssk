@@ -1,10 +1,13 @@
-var app = angular.module('clinicApp', ["ui.router"]);
+var app = angular.module('clinicApp', ["ui.router", "ngResource"]);
    
 // ***
 // Routing
 // ***
+
 app
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+
+        $httpProvider.defaults.withCredentials = true;
 
         $urlRouterProvider.otherwise("/404");
 
@@ -111,3 +114,4 @@ app
                 }
             });
     })
+

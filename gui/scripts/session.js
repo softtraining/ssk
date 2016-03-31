@@ -6,6 +6,7 @@ app.service('session', function ($rootScope) {
     service.user = {};
     
     service.create = function (user) {
+        console.log(user);
         service.user = user;
         $rootScope.user = user;
     };

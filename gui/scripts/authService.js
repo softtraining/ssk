@@ -5,13 +5,20 @@ app
     .factory("Auth", ['$http', '$state', '$rootScope', '$window', 'errorService', 'session',
         function ($http, $state, $rootScope, $window, errorService, session) {
             var service = {};
-
-            service.login = function (code, isDoctor) {
-                if (code != null) {
-                    $http.get(clinicWS + "auth/" + code + "/" + isDoctor)
+            $http.defaults.useXDomain = true;
+            $rootScope.loginError = false;
+                    
+            service.login = function (loginJ, passwordJ) {
+                if (loginJ != null && passwordJ != null) {
+                    var data = {
+                        login: loginJ,
+                        password: passwordJ
+                    }
+                    $http.post(clinicWS + "auth/login", data)
                         .then(onLogin, onLoginError);
                 }
                 else {
+                    $rootScope.loginError = true;
                     errorService.logError("authService -> login(): parameters are empty");
                 }
             }
@@ -22,6 +29,7 @@ app
             }
 
             var onLoginError = function () {
+                $rootScope.loginError = true;
                 errorService.logError("authService -> login() error, authentication failed when connecting to WS");
             }
 
