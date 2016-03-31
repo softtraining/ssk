@@ -14,10 +14,18 @@ public class AuthService implements IAuthService {
 
 	@Autowired
 	IUserDAO userDAO;
-	
+
 	@Override
 	public User logIn(String login, String password) {
-		return userDAO.findByLoginAndPassword(login, password).get(0);
+		User user = new User();
+		if (userDAO.findByLoginAndPassword(login, password).size() > 0) {
+			user = userDAO.findByLoginAndPassword(login, password).get(0);
+			if (user != null) {
+				return user;
+			}
+		}
+
+		return null;
 	}
 
 }

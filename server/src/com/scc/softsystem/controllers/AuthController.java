@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.scc.softsystem.model.User;
+import com.scc.softsystem.model.json.LoginJSON;
 import com.scc.softsystem.services.interfaces.IAuthService;
 
 @RestController
@@ -19,9 +20,13 @@ public class AuthController {
 	IAuthService authService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ResponseEntity<User> logIn(@RequestBody String login,
-			@RequestBody String password) {
-		return new ResponseEntity<User>(authService.logIn(login, password), HttpStatus.OK);
+	public ResponseEntity<User> logIn(@RequestBody LoginJSON data) {
+		User user = authService.logIn(data.getLogin(), data.getPassword());
+		if(user != null)
+		{
+			return new ResponseEntity<User>(user, HttpStatus.OK);
+		}
+		return new ResponseEntity<User>(new User(), HttpStatus.NOT_FOUND);
 	}
 
 }
