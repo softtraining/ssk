@@ -9,8 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.scc.softsystem.dao.interfaces.IClinicDAO;
 import com.scc.softsystem.dao.interfaces.IScheduleDAO;
 import com.scc.softsystem.dao.interfaces.IUserDAO;
+import com.scc.softsystem.model.Schedule;
 import com.scc.softsystem.model.User;
 import com.scc.softsystem.model.json.UserJSON;
+import com.scc.softsystem.model.json.VisitJSON;
 import com.scc.softsystem.services.interfaces.IUserService;
 
 @Service
@@ -64,6 +66,27 @@ public class UserService implements IUserService {
 	@Override
 	public List<User> findAllPatientsForDoctor(Integer doctorId) {
 		return userDAO.findAllPatientsForDoctor(doctorId);
+    }
+    
+    @Override
+	public boolean addNewVisit(VisitJSON newVisit) {
+		User user = userDAO.findById(newVisit.getUserId());
+		if(user != null) 
+		{
+			Schedule newSchedule = new Schedule();
+			newSchedule.setStart(newVisit.getDateFrom());
+			newSchedule.setEnd(newVisit.getDateTo());
+			scheduleDAO.store(newSchedule);
+			user.setSchedule(scheduleDAO.findById(newSchedule.getId()));
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
+	public List<User> findAllDoctors()
+	{
+		return userDAO.findAllDoctors();
 	}
 
 }

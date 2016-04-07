@@ -7,6 +7,7 @@ import com.scc.softsystem.model.User;
 public interface IUserDAO {
 	User findById(Integer id);
 	List<User> findAll();
+	List<User> findAllDoctors();
 	List<User> findByLoginAndPassword(String login, String password);
 	List<User> findAllPatientsForDoctor(Integer doctorId);
 	void store(User candidate);
