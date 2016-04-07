@@ -22,7 +22,6 @@ public class UserController {
 	@Autowired
 	IUserService userService;
 	
-	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/", method= RequestMethod.GET)
 	public ResponseEntity<List<User>> findAll()
 	{
@@ -35,21 +34,18 @@ public class UserController {
 		return new ResponseEntity<User>(userService.findById(userId), HttpStatus.OK);
 	}
 	
-	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/getDoctors", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getAllDoctors()
 	{
 		return new ResponseEntity<List<User>>(userService.findAllDoctors(), HttpStatus.OK);
 	}
 	
-	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/getByLogin/{login}", method = RequestMethod.POST)
 	public ResponseEntity<List<User>> getByLogin(@PathVariable(value = "login") String userLogin)
 	{
 		return new ResponseEntity<List<User>>(userService.findByLogin(userLogin), HttpStatus.OK);
 	}
 	
-	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/getPatients/{doctorID}", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> findAllPatientsForDoctor(@PathVariable(value = "doctorID") Integer doctorID) 
 	{
