@@ -21,7 +21,7 @@ public class UserController {
 	IUserService userService;
 	
 	@RequestMapping(value = "/", method= RequestMethod.GET)
-	public ResponseEntity<List<User>> findAllDoctors()
+	public ResponseEntity<List<User>> findAll()
 	{
 		return new ResponseEntity<List<User>>(userService.findAll(), HttpStatus.OK);
 	}
@@ -36,5 +36,11 @@ public class UserController {
 	public ResponseEntity<List<User>> getByLogin(@PathVariable(value = "login") String userLogin)
 	{
 		return new ResponseEntity<List<User>>(userService.findByLogin(userLogin), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/getPatients/{doctorID}", method = RequestMethod.GET)
+	public ResponseEntity<List<User>> findAllPatientsForDoctor(@PathVariable(value = "doctorID") Integer doctorID) 
+	{
+		return new ResponseEntity<List<User>>(userService.findAllPatientsForDoctor(doctorID), HttpStatus.OK);
 	}
 }

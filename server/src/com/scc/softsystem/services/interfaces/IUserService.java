@@ -9,6 +9,7 @@ public interface IUserService {
 	User findById(Integer id);
 	List<User> findAll();
 	List<User> findByLogin(String login);
+	List<User> findAllPatientsForDoctor(Integer doctorId);
 	User findByLoginAndPassword(String login, String password);
 	void update(UserJSON candidate);
 }

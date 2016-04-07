@@ -31,10 +31,12 @@
                     <li ng-if="!user"><a ui-sref="all.home">Home</a></li>
                     <li ng-if="user"><a ui-sref="user.dashboard">Dashboard</a></li>
                     <li ng-if="user"><a ui-sref="user.visits">Visits</a></li>
+                    <li ng-if="user.doctor != null"><a ui-sref="user.patients">Patients</a></li>
+                    <li ng-if="user.admin"><a ui-sref="user.doctors">Doctors</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-if="user" class='active'>
-                        <a>{{user.firstName}} {{user.lastName}}, {{user.code}}</a>
+                        <a>{{user.firstName}} {{user.lastName}}</a>
                     </li>
                     <li ng-if="!user"><a ui-sref="all.login">Login</a></li>
                     <li ng-if="user"><a ng-click="logout()">Logout</a></li>

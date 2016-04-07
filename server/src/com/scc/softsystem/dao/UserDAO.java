@@ -40,4 +40,11 @@ public class UserDAO extends BaseDAO<Integer, User>implements IUserDAO {
 		persist(candidate);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> findAllPatientsForDoctor(Integer doctorId) {
+		Criteria criteria = createEntityCriteria().add(Restrictions.eq("user.id", doctorId));
+		return criteria.list();
+	}
+
 }

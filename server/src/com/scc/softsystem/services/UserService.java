@@ -61,4 +61,9 @@ public class UserService implements IUserService {
 		return userDAO.findByLoginAndPassword(login, "");
 	}
 
+	@Override
+	public List<User> findAllPatientsForDoctor(Integer doctorId) {
+		return userDAO.findAllPatientsForDoctor(doctorId);
+	}
+
 }

@@ -44,7 +44,7 @@ public class User implements Serializable {
 	@Column(name = "isDoctor")
 	private boolean isDoctor;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "User_idUser")
 	private User user;
 	
