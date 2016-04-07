@@ -3,46 +3,9 @@ var clinicWS = "http://localhost:8080/SSK/";
 
 app.controller('visitsCtrl', ['$scope', '$http', 'session', 'errorService',
     function ($scope, $http, session, errorService) {
-        $scope.form = {};
-        console.log(session.user);
-        
-        
-        var retrieveVisits = function() {
-            $http.get(clinicWS + "user/getVisits/" + session.user.id)
-            .then(onGetVisits, onGetVisitsError);
-        }
-        
-        retrieveVisits();
-        
-        var onGetVisits = function (response) {
-            console.log(response);
-            $scope.visit = response.data;
-        }
-
-        var onGetVisitsError = function (response) {
-            errorService.logError("Failed in visitsCtrl: " + response.status);
-        }
-
-        $scope.addNewVisit = function () {
-            $scope.newVisitForm = true;
-
-        }
-
-        $scope.newVisit = function () {
-            var data = { userId: session.user.id, doctorId: session.user.user.id, dateFrom: $scope.form.dateFrom, dateTo: $scope.form.dateTo };
-            $http.post(clinicWS + "/user/addVisit", data)
-                .then(onVisitAdded);
-        }
-        
-        $scope.getVisit = function() {
-            retrieveVisits();
-        }
-
-        var onVisitAdded = function (response) {
-            $scope.addedVisit = response.statusText;
-            $scope.newVisitForm = false;
-            retrieveVisits();
-        }
+       
+       
+       // TO - DO write visits CTRL
 
     /**
      *

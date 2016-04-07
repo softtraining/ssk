@@ -67,13 +67,8 @@ app
                     url: "/dashboard",
                     templateUrl: "templates/dashboard.html",
                 })
-            .state('user.visits',
-                {
-                    url: "/visits",
-                    templateUrl: "templates/visits.html",
-                    controller: 'visitsCtrl'
-                }
-                )
+            // TO - DO add new state to visits
+            //
         // for higher access - rights users
             .state('user.doctors',
                 {
