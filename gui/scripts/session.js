@@ -1,22 +1,19 @@
 var app = angular.module('clinicApp');
 
 app.service('session', function ($rootScope) {
-
-    var service = {};
-    service.user = {};
+    this.user = {};
     
-    service.create = function (user) {
-        service.user = user;
+    this.create = function (user) {
+        this.user = user;
         $rootScope.user = user;
-        if(user.firstName == "Damian")
+        if(user.firstName == "User")
         {
             $rootScope.user.admin = true;
         }
     };
 
-    service.destroy = function () {
-        service.user = null;
+    this.destroy = function () {
+        this.user = null;
         $rootScope.user = null;
     };
-    return service;
 });

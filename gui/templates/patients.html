@@ -1,1 +1,21 @@
-patients
+<div class="content-fixed-navbar">
+    <button ng-if="!patients" class='btn btn-success' ng-click="showAllPatientsForDoctor()">Show my patients</button>
+    <table ng-if="patients" class="table table-hovered">
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Login</th>
+            <th>Password</th>
+            <th>IsDoctor</th>
+            <th>Schedule</th>
+        </tr>
+        <tr ng-repeat="patient in patients">
+            <td>{{patient.firstName}}</td>
+            <td>{{patient.lastName}}</td>
+            <td>{{patient.login}}</td>
+            <td>{{patient.password}}</td>
+            <td>{{patient.doctor}}</td>
+            <td>{{patient.schedule.start | date:'yyyy-MM-dd'}} - {{patient.schedule.end | date:'yyyy-MM-dd'}}</td>
+        </tr>
+    </table>
+</div>

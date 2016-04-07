@@ -89,4 +89,10 @@ public class UserService implements IUserService {
 		return userDAO.findAllDoctors();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public Schedule getVisitForUser(Integer userId) {
+		return userDAO.findById(userId).getSchedule();
+	}
+
 }

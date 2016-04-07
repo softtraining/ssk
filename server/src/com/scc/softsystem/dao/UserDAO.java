@@ -27,7 +27,7 @@ public class UserDAO extends BaseDAO<Integer, User>implements IUserDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAllDoctors() {
-		Criteria criteria = createEntityCriteria().add(Restrictions.isNotNull("user"));
+		Criteria criteria = createEntityCriteria().add(Restrictions.isNull("user"));
 		return (List<User>) criteria.list();
 	}
 

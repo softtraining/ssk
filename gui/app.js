@@ -1,4 +1,4 @@
-var app = angular.module('clinicApp', ["ui.router", "ngResource"]);
+var app = angular.module('clinicApp', ["ui.router", "ngResource", "ui.bootstrap"]);
    
 // ***
 // Routing
@@ -79,6 +79,7 @@ app
                 {
                     url: "/doctors",
                     templateUrl: "templates/doctors.html",
+                    controller: 'doctorsCtrl',
                     data:
                     {
                         access: "admin"
@@ -88,6 +89,7 @@ app
                 {
                     url: "/patients",
                     templateUrl: "templates/patients.html",
+                    controller: 'patientsCtrl',
                     data:
                     {
                         access: "doctor"

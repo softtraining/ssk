@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.scc.softsystem.model.Schedule;
 import com.scc.softsystem.model.User;
 import com.scc.softsystem.model.json.VisitJSON;
 import com.scc.softsystem.services.interfaces.IUserService;
@@ -50,6 +51,12 @@ public class UserController {
 	public ResponseEntity<List<User>> findAllPatientsForDoctor(@PathVariable(value = "doctorID") Integer doctorID) 
 	{
 		return new ResponseEntity<List<User>>(userService.findAllPatientsForDoctor(doctorID), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/getVisits/{userId}", method = RequestMethod.GET)
+	public ResponseEntity<Schedule> getVisitsForUser(@PathVariable(value = "userId") Integer userId)
+	{
+		return new ResponseEntity<Schedule>(userService.getVisitForUser(userId), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/addVisit", method = RequestMethod.POST)
