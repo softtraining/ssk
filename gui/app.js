@@ -71,6 +71,7 @@ app
                 {
                     url: "/visits",
                     templateUrl: "templates/visits.html",
+                    controller: 'visitsCtrl'
                 }
                 )
         // for higher access - rights users
