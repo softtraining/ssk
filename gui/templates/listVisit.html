@@ -1,0 +1,10 @@
+<table class="table table-strip" ng-if="data">
+        <tr>
+            <th>Start date</th>
+            <th>End date</th>
+        </tr>
+        <tr>
+            <td>{{data.start | date:'yyyy-MM-dd'}}</td>
+            <td>{{data.end | date:'yyyy-MM-dd'}}</td>
+        </tr>
+    </table>

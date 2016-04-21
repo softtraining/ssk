@@ -1,27 +1,17 @@
 <div class="content-fixed-navbar">
     <button ng-if="!visit" class="btn btn-primary" ng-click="getVisit()">Show visits</button>
-    <table class="table table-strip" ng-if="visit">
-        <tr>
-            <th>Start date</th>
-            <th>End date</th>
-        </tr>
-        <tr>
-            <td>{{visit.start | date:'yyyy-MM-dd'}}</td>
-            <td>{{visit.end | date:'yyyy-MM-dd'}}</td>
-        </tr>
-    </table>
-    {{visit}}
+    <visit data="visit" ng-if="visit"></visit>
     <hr/>
 
     <button ng-if="visit" class="btn btn-success" ng-click="addNewVisit()">Change visit</button>
     <div ng-if="newVisitForm">
         Date From:
-        <uib-datepicker ng-model="form.dateFrom" class="well well-sm" datepicker-options="inlineOptions"></uib-datepicker>
+        <uib-datepicker draggable ng-model="form.dateFrom" class="well well-sm" datepicker-options="inlineOptions"></uib-datepicker>
         Date To:
-        <uib-datepicker ng-model="form.dateTo" class="well well-sm" datepicker-options="inlineOptions"></uib-datepicker>
+        <uib-datepicker draggable ng-model="form.dateTo" class="well well-sm" datepicker-options="inlineOptions"></uib-datepicker>
         <br />
         <button class="btn btn-success" ng-click="newVisit()">Update visit</button>
     </div>
 
-    Status of adding visit: {{addedVisit}}
+    <p>Status of adding visit: {{addedVisit}}</p>
 </div>

@@ -116,5 +116,69 @@ app
                     }
                 }
             });
-    })
+    });
+    
+app
+    .directive('visit', function () {
+        return {
+            restrict: 'E',
+            scope: {
+                data: '='
+            },
+            templateUrl: 'templates/listVisit.html'    
+        }
+    });
 
+app
+    .directive('draggable', ['$document', function ($document) {
+        return {
+            link: function(scope, element, attrs)
+            {
+                var startX = startY = x = y = 0;
+                
+                element.css({
+                    position: 'relative'
+                });
+                
+                element.on('mouseenter', function () {
+                    element.css({
+                        opacity: '0.3',
+                        cursor: 'pointer'
+                    });
+                });
+                
+                element.on('mouseleave', function () {
+                    element.css({
+                        opacity: '1',
+                        cursor: 'default'
+                    });
+                });
+                
+                element.on('mousedown', function (event) {
+                    event.preventDefault();
+                    startX = event.pageX - x;
+                    startY = event.pageY - y;
+                    $document.on('mousemove', mousemove);
+                    $document.on('mouseup', mouseup);
+                });
+                
+                function mousemove(event)
+                {
+                    y = event.pageY - startY;
+                    x = event.pageX - startX;
+                    element.css(
+                        {
+                            top: y + 'px',
+                            left: x + 'px'
+                        }
+                        );
+                }
+                
+                function mouseup()
+                {
+                    $document.off('mousemove', mousemove);
+                    $document.off('mouseup', mouseup);
+                }
+            }
+        }
+    }]);
