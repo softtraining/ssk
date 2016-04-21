@@ -1,14 +1,14 @@
 <div class="content-fixed-navbar">
     <button ng-if="!visit" class="btn btn-primary" ng-click="getVisit()">Show visits</button>
-    <visit data="visit" ng-if="visit"></visit>
+    <!-- ADD directive that prints a visit for user -->
     <hr/>
-
+    <!-- ADD directives that enables draggable for elements -->
     <button ng-if="visit" class="btn btn-success" ng-click="addNewVisit()">Change visit</button>
     <div ng-if="newVisitForm">
         Date From:
-        <uib-datepicker draggable ng-model="form.dateFrom" class="well well-sm" datepicker-options="inlineOptions"></uib-datepicker>
+        <uib-datepicker ng-model="form.dateFrom" class="well well-sm" datepicker-options="inlineOptions"></uib-datepicker>
         Date To:
-        <uib-datepicker draggable ng-model="form.dateTo" class="well well-sm" datepicker-options="inlineOptions"></uib-datepicker>
+        <uib-datepicker ng-model="form.dateTo" class="well well-sm" datepicker-options="inlineOptions"></uib-datepicker>
         <br />
         <button class="btn btn-success" ng-click="newVisit()">Update visit</button>
     </div>
